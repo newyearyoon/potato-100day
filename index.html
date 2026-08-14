@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#10130e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>🥔 감자 키우기 · 100 DAY</title>
+<style>
+:root{--bg:#10130e;--panel:#1b2017;--panel2:#242a1e;--line:#3b4433;--cream:#f5efdf;--muted:#9da58f;--green:#b7d477;--green2:#d9ecab;--yellow:#e5bd61;--red:#dc786a;--blue:#92b8cf}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:radial-gradient(circle at 50% -5%,#303a27 0,#10130e 45%);color:var(--cream);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif}.app{width:min(570px,100%);margin:auto;padding:14px 14px 100px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.brand{font-size:21px;font-weight:900;letter-spacing:-.07em}.season{font-size:9px;color:var(--muted);letter-spacing:.12em;margin-top:2px}.headBtns{display:flex;gap:6px}.iconBtn{border:1px solid var(--line);background:var(--panel);color:var(--cream);border-radius:10px;padding:8px 10px}
+.hero{background:linear-gradient(145deg,#222b1c,#151914);border:1px solid #46533a;border-radius:21px;padding:16px;box-shadow:0 16px 40px #0007}.heroRow{display:flex;gap:16px;align-items:center}.potato{font-size:55px;filter:drop-shadow(0 5px 0 #0008)}.lv{font-family:monospace;font-size:10px;color:var(--green2);font-weight:800}.name{font-size:23px;font-weight:900;letter-spacing:-.07em}.day{font-size:11px;color:var(--muted);margin-top:2px}.streak{font-size:11px;color:var(--yellow);font-weight:800;margin-top:5px}
+.xp{margin-top:14px}.xpHead{display:flex;justify-content:space-between;font-size:10px;color:var(--muted)}.xpBar{height:8px;background:#0d100c;border:1px solid #46513b;border-radius:3px;overflow:hidden;margin-top:5px}.xpFill{height:100%;background:var(--green);transition:.3s}
+.goalRow{display:flex;justify-content:space-between;align-items:end;margin-top:13px}.goalRow small{font-size:9px;color:var(--muted)}.goalRow strong{font-size:21px}.mini{display:flex;gap:6px;margin-top:10px}.mini span{background:#13170f;border:1px solid var(--line);border-radius:8px;padding:7px 8px;font-size:9px;color:var(--muted);flex:1}.mini b{color:var(--cream)}
+.card{margin-top:11px;background:rgba(27,32,23,.96);border:1px solid var(--line);border-radius:17px;padding:14px}.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;font-size:15px;font-weight:900}.hint{font-size:9px;color:var(--muted);font-weight:400}
+.timeline{position:relative}.timeline:before{content:"";position:absolute;left:40px;top:10px;bottom:10px;width:1px;background:#394331}.slot{display:grid;grid-template-columns:56px 1fr;gap:7px;min-height:66px}.time{font-family:monospace;font-size:9px;color:#818a75;padding-top:10px}.event{background:#20251d;border:1px solid #363d30;border-radius:12px;padding:9px 10px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center;gap:8px}.event.empty{border-style:dashed}.eventMain{display:flex;align-items:center;gap:9px;min-width:0}.eventIcon{font-size:18px}.eventTitle{font-size:12px;font-weight:850;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.eventMeta{font-size:9px;color:var(--muted);margin-top:2px}.plus{border:1px solid #536047;background:#2a3324;color:var(--green2);border-radius:8px;padding:6px 8px;font-size:10px;font-weight:900;white-space:nowrap}.tag{font-size:9px;padding:5px 7px;border-radius:7px;background:#303b29;color:var(--green2);font-weight:900;white-space:nowrap}.tag.warn{background:#473b26;color:#efcb79}.tag.bad{background:#472c28;color:#ef9a8c}
+.weight{background:#14180f;border:1px solid var(--line);border-radius:12px;padding:11px}.weightTop{display:flex;justify-content:space-between;align-items:end}.weightNow{font-size:26px;font-weight:900}.weightGoal{font-size:9px;color:var(--muted)}.graph{height:145px;position:relative;margin-top:8px;border-bottom:1px solid #394030;overflow:hidden}.goalLine{position:absolute;left:0;right:0;border-top:1px dashed #9fb777}.goalLabel{position:absolute;right:0;top:-16px;font-size:9px;color:var(--green2)}.graph svg{width:100%;height:100%}.legend{display:flex;justify-content:space-between;font-size:8px;color:var(--muted);margin-top:5px}
+.growth{display:grid;grid-template-columns:70px 1fr;gap:12px;align-items:center;background:#14180f;border:1px solid var(--line);border-radius:12px;padding:12px}.growthPotato{font-size:47px;text-align:center;filter:drop-shadow(0 4px 0 #0008)}.growthTitle{font-weight:900;font-size:14px}.growthNext{font-size:10px;color:var(--green2);margin-top:3px}.growthMsg{font-size:9px;color:var(--muted);margin-top:4px}.achievements{display:flex;gap:7px;overflow:auto;padding-bottom:2px}.badge{min-width:86px;border:1px solid var(--line);background:#151910;border-radius:10px;padding:9px;text-align:center}.badge span{font-size:21px}.badge b{display:block;font-size:9px;margin-top:4px}.badge small{font-size:8px;color:var(--muted)}
+.status{display:flex;gap:10px;align-items:center}.statusIcon{font-size:24px}.status b{font-size:13px}.status p{font-size:10px;color:var(--muted);margin:2px 0 0}
+.nav{position:fixed;left:0;right:0;bottom:0;background:#10130ef2;border-top:1px solid var(--line);z-index:5}.navIn{width:min(570px,100%);margin:auto;display:grid;grid-template-columns:repeat(3,1fr);padding:7px 10px calc(7px + env(safe-area-inset-bottom))}.nav button{background:none;border:0;color:#818a75;padding:7px;font-size:10px}.nav button.active{color:var(--green2);font-weight:900}
+.modal{position:fixed;inset:0;background:#000b;display:none;align-items:end;z-index:20}.modal.show{display:flex}.sheet{width:min(570px,100%);margin:auto;background:#1a1f17;border:1px solid var(--line);border-radius:20px 20px 0 0;padding:17px 14px calc(18px + env(safe-area-inset-bottom));max-height:90vh;overflow:auto}.close{float:right;border:0;background:none;color:var(--cream);font-size:24px}.sheet h2{margin:0 0 14px;font-size:19px}.field{margin:12px 0}.field label{display:block;color:var(--muted);font-size:10px;margin-bottom:6px}.field input{width:100%;background:#10130e;border:1px solid var(--line);border-radius:10px;color:var(--cream);padding:12px;outline:none}.pills{display:flex;gap:6px;flex-wrap:wrap}.pill{background:#20251d;border:1px solid var(--line);color:var(--cream);border-radius:9px;padding:9px 11px;font-size:10px}.pill.sel{background:#35452a;border-color:#75915a;color:#eff8d8;font-weight:900}.primary{width:100%;border:0;background:var(--green);color:#17200f;padding:13px;border-radius:11px;font-weight:900;margin-top:7px}.secondary{width:100%;border:1px solid var(--line);background:#20251d;color:var(--cream);padding:11px;border-radius:11px;font-weight:800;margin-top:7px}.smallNote{font-size:9px;color:var(--muted);line-height:1.6}.toast{position:fixed;left:50%;bottom:82px;transform:translateX(-50%);background:#e8f0d7;color:#17200f;padding:9px 13px;border-radius:9px;font-size:10px;font-weight:900;opacity:0;transition:.2s;z-index:30}.toast.on{opacity:1}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.calday{aspect-ratio:1;border:1px solid var(--line);background:#151910;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--muted)}.calday.good{background:#35452a;color:#e3f1c8;border-color:#627c4d}.calday.today{outline:2px solid var(--yellow);color:var(--cream)}.historyItem{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #30372a}.historyItem:last-child{border:0}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="header"><div><div class="brand">🥔 감자 키우기</div><div class="season">100 DAYS · SEASON 01 · GOAL 55KG</div></div><div class="headBtns"><button class="iconBtn" onclick="openSettings()">⚙</button></div></header>
+
+<section class="hero">
+ <div class="heroRow"><div class="potato" id="potato">🥔</div><div><div class="lv" id="level">LV.01</div><div class="name" id="name">꼬마 감자</div><div class="day" id="day">DAY 1 / 100</div><div class="streak" id="streak">🔥 0 DAY STREAK</div></div></div>
+ <div class="xp"><div class="xpHead"><span>GROWTH XP</span><span id="xpText">0 / 100</span></div><div class="xpBar"><div class="xpFill" id="xpFill"></div></div></div>
+ <div class="goalRow"><div><small>100일 목표</small><br><strong>62.0 → 55.0 kg</strong></div><div style="text-align:right"><small>현재</small><br><strong id="current">62.0 kg</strong></div></div>
+ <div class="mini"><span>SUCCESS <b id="success">0</b></span><span>BEST <b id="best">0</b></span><span>XP <b id="xpMini">0</b></span></div>
+</section>
+
+<section class="card">
+ <div class="title"><span>오늘의 타임라인</span><span class="hint">시간대를 눌러 기록</span></div>
+ <div class="timeline" id="timeline"></div>
+</section>
+
+<section class="card">
+ <div class="title"><span>⚖️ 체중 여정</span><span class="hint">GOAL 55.0 KG</span></div>
+ <div class="weight"><div class="weightTop"><div><span class="weightGoal">오늘</span><div class="weightNow" id="weightNow">— kg</div></div><div class="weightGoal">START 62.0 → GOAL 55.0</div></div><div class="graph" id="graph"></div><div class="legend"><span>DAY 1</span><span>DAY 100</span></div></div>
+</section>
+
+<section class="card">
+ <div class="title"><span>🌱 감자 성장</span><span class="hint">기록하면 자라요</span></div>
+ <div class="growth"><div class="growthPotato" id="growthPotato">🥔</div><div><div class="growthTitle" id="growthTitle">꼬마 감자</div><div class="growthNext" id="growthNext">NEXT · 새싹 감자</div><div class="growthMsg" id="growthMsg">오늘의 작은 기록이 감자를 키워요.</div></div></div>
+</section>
+
+<section class="card">
+ <div class="title"><span>🏆 작은 업적</span><span class="hint">수집하기</span></div>
+ <div class="achievements" id="achievements"></div>
+</section>
+
+<section class="card">
+ <div class="title"><span>🌙 오늘의 판정</span><span class="hint">과식해도 다시 시작</span></div>
+ <div class="status"><div class="statusIcon" id="statusIcon">🥔</div><div><b id="statusTitle">오늘을 시작해볼까요?</b><p id="statusMsg">타임라인을 하나씩 채워보세요.</p></div></div>
+</section>
+</div>
+
+<nav class="nav"><div class="navIn"><button class="active" onclick="home()">🥔 오늘</button><button onclick="historyView()">📅 100일 기록</button><button onclick="growthView()">🏆 성장</button></div></nav>
+<div class="modal" id="modal"><div class="sheet"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY='potato100_final_v1';
+const defaultDB={start:62,target:55,day:1,xp:0,streak:0,best:0,success:0,weightLog:[],days:{},slots:{}};
+let db=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(defaultDB);
+if(!db.days)db.days={}; if(!db.slots)db.slots={}; if(!db.weightLog)db.weightLog=[];
+
+const slots=[
+{id:'breakfast',time:'08:00',icon:'🌅',title:'아침',type:'breakfast'},
+{id:'lunch',time:'11:30',icon:'🍚',title:'점심',type:'main'},
+{id:'cafe',time:'15:00',icon:'☕',title:'카페',type:'quick'},
+{id:'prework',time:'17:00',icon:'🥛',title:'운동 전',type:'quick'},
+{id:'workout',time:'18:00',icon:'🏋️',title:'운동',type:'workout'},
+{id:'dinner',time:'19:30',icon:'🍽️',title:'운동 후 저녁',type:'main'}
+];
+
+function today(){return new Date().toISOString().slice(0,10)}
+function save(){localStorage.setItem(KEY,JSON.stringify(db));render()}
+function xpForMain(amount){return {소식:8,적당:15,배부름:3,과식:0}[amount]??0}
+function recordForDay(){return db.days[today()]||null}
+function markDay(){
+ const key=today(), main=['lunch','dinner'].map(id=>db.slots[id]).filter(Boolean), workout=db.slots.workout;
+ const overeats=main.filter(x=>x.amount==='과식').length;
+ const hasAny=Object.keys(db.slots).length>0||db.weightLog.some(x=>x.d===key);
+ if(!hasAny)return;
+ // "성공" is intentionally forgiving: no overeat + some meaningful adherence.
+ const success=overeats===0 && (workout || main.some(x=>x.amount==='적당') || db.slots.prework);
+ db.days[key]={success,updated:Date.now()};
+ const vals=Object.values(db.days);db.success=vals.filter(x=>x.success).length;
+ let streak=0;let d=new Date();
+ while(true){const k=d.toISOString().slice(0,10);if(db.days[k]?.success){streak++;d.setDate(d.getDate()-1)}else break}
+ db.streak=streak;db.best=Math.max(db.best,streak);
+ const start=new Date(); start.setHours(0,0,0,0); const dayDiff=Math.floor((Date.now()-start.getTime())/86400000);
+ db.day=Math.min(100,Math.max(1,Math.min(100,Math.max(1,Math.ceil((Object.keys(db.days).length||1))))));
+}
+function render(){
+ markDay();
+ const lvl=Math.floor(db.xp/100)+1;
+ const stages=[
+  {at:1,icon:'🥔',name:'꼬마 감자'},
+  {at:5,icon:'🌱🥔',name:'새싹 감자'},
+  {at:10,icon:'🥔🌿',name:'성장 감자'},
+  {at:20,icon:'🥔🏃',name:'운동 감자'},
+  {at:30,icon:'🥔✨',name:'반짝 감자'},
+  {at:40,icon:'👑🥔',name:'100일 감자'}
+ ];
+ let cur=stages[0],next=stages[1];
+ stages.forEach((s,i)=>{if(lvl>=s.at)cur=s;if(lvl<s.at&&next===stages[1])next=s});
+ if(lvl>=40){cur=stages[5];next=stages[5]}
+ document.getElementById('potato').textContent=cur.icon;document.getElementById('name').textContent=cur.name;
+ document.getElementById('level').textContent='LV.'+String(lvl).padStart(2,'0');
+ document.getElementById('day').textContent=`DAY ${Math.min(100,Math.max(1,db.day))} / 100`;
+ document.getElementById('streak').textContent=`🔥 ${db.streak} DAY STREAK`;
+ document.getElementById('xpText').textContent=`${db.xp%100} / 100`;document.getElementById('xpFill').style.width=(db.xp%100)+'%';
+ document.getElementById('success').textContent=db.success;document.getElementById('best').textContent=db.best;document.getElementById('xpMini').textContent=db.xp;
+ const last=db.weightLog.length?db.weightLog[db.weightLog.length-1].w:null;document.getElementById('current').textContent=(last??db.start).toFixed(1)+' kg';document.getElementById('weightNow').textContent=last?last.toFixed(1)+' kg':'— kg';
+ renderTimeline();renderGraph();renderGrowth(stages,lvl);renderAchievements();status();
+}
+function renderTimeline(){
+ document.getElementById('timeline').innerHTML=slots.map(s=>{const x=db.slots[s.id];return `<div class="slot"><div class="time">${s.time}</div><div>${x?eventHTML(s,x):emptyHTML(s)}</div></div>`}).join('');
+}
+function emptyHTML(s){
+ const defaultText=s.id==='breakfast'?'기본값 · 거르기':s.id==='cafe'?'평소 루틴 · 카페':s.id==='prework'?'평소 루틴 · 두유':'눌러서 기록';
+ return `<div class="event empty"><div class="eventMain"><span class="eventIcon">${s.icon}</span><div><div class="eventTitle">${s.title}</div><div class="eventMeta">${defaultText}</div></div></div><button class="plus" onclick="openSlot('${s.id}')">+ 기록</button></div>`;
+}
+function eventHTML(s,x){
+ let meta=x.kind?`${x.kind} · ${x.mins}분`:x.text||'기록 완료';let tag=x.amount||'✓';
+ return `<div class="event"><div class="eventMain"><span class="eventIcon">${s.icon}</span><div><div class="eventTitle">${s.title}${x.text&&s.type!=='breakfast'?' · '+esc(x.text):''}</div><div class="eventMeta">${meta}</div></div></div><span class="tag ${x.amount==='과식'?'bad':x.amount==='배부름'?'warn':''}">${tag}</span></div>`;
+}
+function openSlot(id){
+ const s=slots.find(a=>a.id===id);
+ if(s.type==='breakfast'){modal(`<h2>🌅 아침</h2><div class="field"><label>아침을 먹었나요?</label><div class="pills"><button class="pill sel" onclick="pick(this)">거름</button><button class="pill" onclick="pick(this)">먹음</button></div></div><div class="field"><label>먹었다면 무엇을?</label><input id="txt" placeholder="예: 두유"></div><button class="primary" onclick="saveSlot('${id}')">기록하기</button>`);return}
+ if(s.type==='main'){modal(`<h2>${s.icon} ${s.title}</h2><div class="field"><label>무엇을 먹었나요?</label><input id="txt" placeholder="예: 구내식당, 파스타"></div><div class="field"><label>먹은 양 <span style="font-size:9px">소식=1/3~1/2 · 적당=살짝 아쉬운 정도</span></label><div class="pills">${['소식','적당','배부름','과식'].map((v,i)=>`<button class="pill ${i===1?'sel':''}" onclick="pick(this)">${v}</button>`).join('')}</div></div><button class="primary" onclick="saveSlot('${id}')">기록하기</button>`);return}
+ if(s.type==='quick'){const preset=s.id==='cafe'?'아이스 라떼':s.id==='prework'?'두유':'';modal(`<h2>${s.icon} ${s.title}</h2><div class="field"><label>무엇을 먹었나요?</label><input id="txt" value="${preset}" placeholder="예: 두유, 쿠키"></div><button class="primary" onclick="saveSlot('${id}')">기록하기</button>`);return}
+ if(s.type==='workout'){modal(`<h2>🏋️ 운동</h2><div class="field"><label>운동 종류</label><div class="pills"><button class="pill sel" onclick="pick(this)">PT</button><button class="pill" onclick="pick(this)">개인운동</button></div></div><div class="field"><label>개인운동 내용</label><div class="pills"><button class="pill sel" onclick="pick(this)">유산소</button><button class="pill" onclick="pick(this)">근력</button><button class="pill" onclick="pick(this)">기타</button></div></div><div class="field"><label>시간(분)</label><input id="mins" type="number" inputmode="numeric" placeholder="예: 45"></div><button class="primary" onclick="saveWorkout('${id}')">기록하기</button>`)}
+}
+function saveSlot(id){
+ const s=slots.find(a=>a.id===id),txt=document.getElementById('txt')?.value.trim();
+ if(id==='breakfast'){const eat=[...document.querySelectorAll('.pill')].find(x=>x.classList.contains('sel')).textContent;if(eat==='먹음'&&!txt)return;db.slots[id]={text:eat==='거름'?'거름':txt,icon:s.icon};db.xp+=3}
+ else{if(!txt)return;const amount=s.type==='main'?[...document.querySelectorAll('.pill')].find(x=>x.classList.contains('sel')).textContent:null;db.slots[id]={text:txt,amount,icon:s.icon};db.xp+=s.type==='main'?xpForMain(amount):8}
+ closeModal();toast('기록 완료');save()
+}
+function saveWorkout(id){const p=[...document.querySelectorAll('.pill')].filter(x=>x.classList.contains('sel')),mins=+document.getElementById('mins').value;if(!mins)return;db.slots[id]={kind:p[0].textContent,detail:p[1].textContent,mins,icon:'🏋️'};db.xp+=30;closeModal();toast('운동 완료 +30 XP');save()}
+function openWeight(){modal(`<h2>⚖️ 오늘 체중</h2><div class="field"><label>아침 체중 (kg)</label><input id="weight" type="number" step="0.1" inputmode="decimal" placeholder="예: 61.4"></div><button class="primary" onclick="saveWeight()">저장하기</button>`)}
+function saveWeight(){const w=parseFloat(document.getElementById('weight').value);if(!w)return;db.weightLog=db.weightLog.filter(x=>x.d!==today());db.weightLog.push({d:today(),w});db.xp+=5;closeModal();toast('체중 기록 완료 +5 XP');save()}
+function renderGraph(){
+ const el=document.getElementById('graph'),W=520,H=145,p=8,vals=db.weightLog.length?db.weightLog.map(x=>x.w):[db.start],min=54.5,max=63,y=v=>H-p-(v-min)/(max-min)*(H-p*2),gy=y(db.target);
+ const points=vals.map((v,i)=>`${p+(i/Math.max(1,vals.length-1))*(W-p*2)},${y(v)}`).join(' ');
+ el.innerHTML=`<div class="goalLine" style="top:${gy}px"><span class="goalLabel">GOAL 55.0</span></div><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><polyline points="${points}" fill="none" stroke="#b7d477" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>${vals.map((v,i)=>{const x=p+(i/Math.max(1,vals.length-1))*(W-p*2);return `<circle cx="${x}" cy="${y(v)}" r="4" fill="#d9ecab"/>`}).join('')}</svg>`
+}
+function renderGrowth(stages,lvl){
+ const cur=stages.reduce((a,s)=>lvl>=s.at?s:a,stages[0]),next=stages.find(s=>s.at>lvl);
+ document.getElementById('growthPotato').textContent=cur.icon;document.getElementById('growthTitle').textContent=cur.name;
+ document.getElementById('growthNext').textContent=next?`NEXT · ${next.name} · LV.${next.at}`:'✨ FINAL EVOLUTION COMPLETE';
+ document.getElementById('growthMsg').textContent=next?`${Math.max(0,next.at*100-db.xp)} XP 더 모으면 성장해요.`:'100일 여정을 완주한 특별한 감자예요.';
+}
+function renderAchievements(){
+ const arr=[
+  ['🌱','첫 기록','기록 시작'],['🔥','3일 연속','3일 성공'],['🏋️','운동 감자','운동 5회'],['🍚','적당의 달인','적당 식사 10회'],['⚖️','체중 기록러','체중 10회'],['🏆','100일 완주','DAY 100']
+ ];
+ const count={first:Object.keys(db.days).length>=1,streak:db.best>=3,workout:Object.values(db.slots).filter(x=>x.kind).length>=5,meal:Object.values(db.slots).filter(x=>x.amount==='적당').length>=10,weight:db.weightLog.length>=10,finish:db.day>=100};
+ document.getElementById('achievements').innerHTML=arr.map((a,i)=>`<div class="badge" style="opacity:${[count.first,count.streak,count.workout,count.meal,count.weight,count.finish][i]?1:.35}"><span>${a[0]}</span><b>${a[1]}</b><small>${a[2]}</small></div>`).join('');
+}
+function status(){
+ const main=['lunch','dinner'].map(id=>db.slots[id]).filter(Boolean),over=main.filter(x=>x.amount==='과식').length,bloat=main.filter(x=>x.amount==='배부름').length;
+ let t='오늘을 시작해볼까요?',m='타임라인을 하나씩 채워보세요.',i='🥔';
+ if(main.length||db.slots.workout){if(over){t='조금 아쉬운 하루';m='과식 기록이 있어요. 그래도 감자는 퇴화하지 않아요. 내일 다시 시작하면 됩니다.';i='🫠'}else{t='감자, 순항 중!';m=`메인 식사 ${main.length}회 · 과식 없음${db.slots.workout?' · 운동 완료':''}${bloat?' · 배부름 '+bloat+'회':''}`;i='🌱'}}
+ document.getElementById('statusTitle').textContent=t;document.getElementById('statusMsg').textContent=m;document.getElementById('statusIcon').textContent=i
+}
+function historyView(){
+ const days=Array.from({length:100},(_,i)=>i+1),done=Object.keys(db.days).length;
+ modal(`<h2>📅 100일 기록</h2><div class="smallNote">초록색은 성공한 날, 노란 테두리는 오늘이에요.</div><div class="calendar" style="margin-top:12px">${days.map(d=>{const k=Object.keys(db.days)[d-1],ok=k&&db.days[k]?.success;return `<div class="calday ${ok?'good':''} ${d===db.day?'today':''}">${d}</div>`}).join('')}</div><div style="margin-top:14px" class="smallNote">현재 성공 ${db.success}일 · 최장 연속 ${db.best}일 · 총 XP ${db.xp}</div>`)
+}
+function growthView(){const lvl=Math.floor(db.xp/100)+1;modal(`<h2>🏆 감자 성장</h2><div class="growth" style="margin-bottom:12px"><div class="growthPotato">${document.getElementById('potato').textContent}</div><div><div class="growthTitle">${document.getElementById('name').textContent} · LV.${String(lvl).padStart(2,'0')}</div><div class="growthMsg">100일 동안 기록을 쌓아 감자를 키워요.</div></div></div><div class="smallNote">성장 XP는 식사·운동·체중 기록에서 쌓입니다. 과식했다고 감자가 퇴화하거나 XP가 차감되지는 않아요.</div>`)}
+function openSettings(){
+ modal(`<h2>⚙ 데이터 관리</h2><div class="smallNote">기록은 현재 사용 중인 브라우저의 로컬 저장공간에 보관됩니다. 기기 변경이나 브라우저 데이터 삭제에 대비해 가끔 백업 파일을 저장해두세요.</div><button class="primary" onclick="backup()">💾 데이터 백업</button><button class="secondary" onclick="document.getElementById('restoreFile').click()">📂 데이터 복구</button><input id="restoreFile" type="file" accept=".json" style="display:none" onchange="restore(this.files[0])"><button class="secondary" onclick="resetAll()">↩️ 처음부터 다시 시작</button>`)
+}
+function backup(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='potato-100day-backup.json';a.click();URL.revokeObjectURL(a.href);toast('백업 파일을 저장했어요')}
+function restore(file){if(!file)return;const r=new FileReader();r.onload=()=>{try{db=JSON.parse(r.result);save();closeModal();toast('복구 완료')}catch(e){alert('백업 파일을 읽지 못했어요.')}};r.readAsText(file)}
+function resetAll(){if(confirm('모든 기록을 지울까요? 이 작업은 되돌릴 수 없습니다.')){db=structuredClone(defaultDB);save();closeModal();toast('초기화했어요')}}
+function home(){closeModal();window.scrollTo({top:0,behavior:'smooth'})}
+function modal(c){document.getElementById('modalContent').innerHTML=c;document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function pick(el){el.parentElement.querySelectorAll('.pill').forEach(x=>x.classList.remove('sel'));el.classList.add('sel')}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1400)}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+render();
+</script>
+</body>
+</html>
