@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#151713">
+<title>감자 키우기 · 100 DAYS</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Press+Start+2P&display=swap');
+:root{--bg:#11130f;--panel:#1b1e18;--panel2:#23271f;--line:#3a4034;--cream:#f4eedf;--muted:#a6a896;--green:#a8c36f;--green2:#d5e8a0;--yellow:#e7bf62;--red:#d97868}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#30382a 0,#11130f 42%);color:var(--cream);font-family:"Gowun Dodum",system-ui,sans-serif}.app{width:min(560px,100%);margin:auto;padding:16px 15px 100px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.brand{font-weight:900;letter-spacing:-.06em;font-size:21px}.season{font-size:10px;color:var(--muted);letter-spacing:.08em}.gear{background:var(--panel);border:1px solid var(--line);color:var(--cream);border-radius:10px;padding:8px}
+.hero{border:1px solid #46503e;background:linear-gradient(145deg,#20271c,#151812);border-radius:20px;padding:16px;box-shadow:0 14px 35px #0005;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;inset:auto -30px -50px auto;width:150px;height:150px;border-radius:50%;background:#a8c36f0b}
+.heroRow{display:flex;gap:16px;align-items:center}.pixel{font-family:"Press Start 2P",monospace;font-size:47px;image-rendering:pixelated;filter:drop-shadow(0 5px 0 #0008)}.level{font-family:"Press Start 2P";font-size:9px;color:var(--green2);line-height:1.8}.name{font-size:23px;font-weight:900;letter-spacing:-.07em}.day{font-size:12px;color:var(--muted)}.streak{font-size:12px;color:var(--yellow);font-weight:800;margin-top:4px}
+.xp{margin-top:14px}.xphead{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}.xpbar{height:8px;border:1px solid #48503e;background:#10120e;border-radius:3px;margin-top:5px;overflow:hidden}.xpfill{height:100%;background:var(--green);width:20%}
+.goal{display:flex;justify-content:space-between;align-items:end;margin-top:14px}.goal strong{font-size:22px}.goal small{color:var(--muted);font-size:11px}.mini{display:flex;gap:7px;margin-top:10px}.mini span{background:#151812;border:1px solid var(--line);padding:7px 9px;border-radius:8px;font-size:10px;color:var(--muted)}.mini b{color:var(--cream)}
+.card{margin-top:12px;border:1px solid var(--line);background:rgba(27,30,24,.95);border-radius:17px;padding:15px}.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-weight:900;font-size:15px}.hint{font-size:10px;color:var(--muted);font-weight:400}
+.timeline{position:relative}.timeline:before{content:"";position:absolute;left:38px;top:9px;bottom:9px;width:1px;background:#3b4236}.slot{display:grid;grid-template-columns:55px 1fr;gap:8px;min-height:66px;position:relative}.time{font-family:"Press Start 2P";font-size:8px;color:#7f8776;padding-top:8px;text-align:left}.event{border:1px solid #343a30;background:#20241d;border-radius:12px;padding:10px 11px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}.event.empty{border-style:dashed;color:#777d70}.eventMain{display:flex;gap:9px;align-items:center}.eventIcon{font-size:18px}.eventTitle{font-weight:800;font-size:13px}.eventMeta{font-size:10px;color:var(--muted);margin-top:2px}.plus{border:1px solid #515a48;background:#2a3025;color:var(--green2);border-radius:8px;padding:6px 8px;font-size:10px;font-weight:900}.tag{font-size:9px;padding:5px 7px;border-radius:7px;background:#30372a;color:var(--green2);font-weight:900}.tag.warn{background:#473a25;color:#f0cb76}.tag.bad{background:#452b27;color:#ef9a8d}
+.weightBox{background:#151812;border:1px solid var(--line);border-radius:12px;padding:12px}.weightTop{display:flex;justify-content:space-between;align-items:end}.weightNow{font-size:27px;font-weight:900}.weightGoal{font-size:10px;color:var(--muted)}.graph{height:125px;position:relative;margin-top:9px;overflow:hidden;border-bottom:1px solid #34392f}.goalLine{position:absolute;left:0;right:0;border-top:1px dashed #8e9a79;opacity:.7}.goalLabel{position:absolute;right:0;top:-16px;font-size:9px;color:var(--green2)}svg{width:100%;height:100%;display:block}.legend{display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-top:6px}
+.status{display:flex;gap:10px;align-items:center}.statusIcon{font-size:24px}.status b{font-size:14px}.status p{margin:2px 0 0;color:var(--muted);font-size:11px}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:end;z-index:10}.modal.show{display:flex}.sheet{width:min(560px,100%);margin:auto;background:#1a1d17;border:1px solid var(--line);border-radius:20px 20px 0 0;padding:18px 15px calc(18px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto}.sheet h2{margin:0 0 15px;font-size:19px}.close{float:right;background:none;border:0;color:var(--cream);font-size:24px}.field{margin:13px 0}.field label{font-size:11px;color:var(--muted);display:block;margin-bottom:6px}.field input{width:100%;background:#11130f;border:1px solid var(--line);color:var(--cream);border-radius:10px;padding:12px;outline:none}.pills{display:flex;gap:7px;flex-wrap:wrap}.pill{background:#20241d;border:1px solid var(--line);color:var(--cream);border-radius:9px;padding:9px 11px;font-size:11px}.pill.sel{background:#35412c;border-color:#6e8558;color:#e4f2c6;font-weight:900}.primary{width:100%;border:0;background:var(--green);color:#172012;border-radius:11px;padding:13px;font-weight:900;margin-top:7px}.nav{position:fixed;left:0;right:0;bottom:0;background:#11130fee;border-top:1px solid var(--line);z-index:5}.navin{width:min(560px,100%);margin:auto;display:grid;grid-template-columns:repeat(3,1fr);padding:7px 10px calc(7px + env(safe-area-inset-bottom))}.nav button{background:none;border:0;color:#7f8776;padding:7px;font-size:10px}.nav button.active{color:var(--green2);font-weight:900}.toast{position:fixed;left:50%;bottom:82px;transform:translateX(-50%);background:#e7edda;color:#182016;padding:9px 13px;border-radius:9px;font-size:11px;font-weight:900;opacity:0;transition:.2s;z-index:20}.toast.on{opacity:1}
+.weightBtn{width:100%;margin-top:11px;border:1px solid #667e4f;background:#334128;color:#edf8d4;border-radius:10px;padding:10px;font-size:11px;font-weight:900}\n</style>
+</head>
+<body>
+<div class="app">
+<header class="header"><div><div class="brand">🥔 감자 키우기</div><div class="season">100 DAYS · SEASON 01</div></div><button class="gear" onclick="openSettings()">⚙</button></header>
+
+<section class="hero">
+ <div class="heroRow"><div class="pixel" id="potato">🥔</div><div><div class="level" id="level">LV.01</div><div class="name" id="name">꼬마 감자</div><div class="day" id="day">DAY 1 / 100</div><div class="streak" id="streak">🔥 0 DAY STREAK</div></div></div>
+ <div class="xp"><div class="xphead"><span>GROWTH XP</span><span id="xptext">0 / 100</span></div><div class="xpbar"><div class="xpfill" id="xpfill"></div></div></div>
+ <div class="goal"><div><small>100일 목표</small><br><strong>62.0 → 55.0 kg</strong></div><div><small>현재</small><br><strong id="current">62.0 kg</strong></div></div>
+ <button class="weightBtn" onclick="openWeight()">⚖️ 오늘 아침 체중 기록하기</button><div class="mini"><span>SUCCESS <b id="success">0</b></span><span>BEST STREAK <b id="best">0</b></span><span>XP <b id="xpmini">0</b></span></div>
+</section>
+
+<section class="card">
+ <div class="title"><span>오늘의 타임라인</span><span class="hint">시간을 눌러 기록</span></div>
+ <div class="timeline" id="timeline"></div>
+</section>
+
+<section class="card">
+ <div class="title"><span>⚖️ 체중 여정</span><span class="hint">목표 55.0 kg</span></div>
+ <div class="weightBox"><div class="weightTop"><div><small class="weightGoal">오늘</small><div class="weightNow" id="wNow">— kg</div></div><div class="weightGoal">START 62.0 → GOAL 55.0</div></div><div class="graph" id="graph"></div><div class="legend"><span>DAY 1</span><span>DAY 100</span></div></div>
+</section>
+
+<section class="card">
+ <div class="title"><span>🌱 감자 성장</span><span class="hint">100일 동안 함께 키우기</span></div>
+ <div style="display:flex;align-items:center;gap:15px;background:#151812;border:1px solid var(--line);border-radius:13px;padding:13px">
+   <div id="growthPotato" style="font-size:46px;filter:drop-shadow(0 4px 0 #0008)">🥔</div>
+   <div style="flex:1">
+     <div style="font-size:10px;color:var(--muted)">NEXT EVOLUTION</div>
+     <div id="nextStage" style="font-weight:900;font-size:15px;margin:3px 0">새싹 감자</div>
+     <div style="font-size:10px;color:var(--muted)" id="growthMsg">기록할수록 감자가 자라요.</div>
+   </div>
+ </div>
+ <div style="display:flex;gap:7px;margin-top:9px">
+   <span class="tag">🍚 적당 +15 XP</span>
+   <span class="tag">🏋️ 운동 +30 XP</span>
+   <span class="tag">⚖️ 체중 +5 XP</span>
+ </div>
+</section>
+
+<section class="card">
+ <div class="title"><span>🌙 오늘의 판정</span><span class="hint">자동 + 최종 확인</span></div>
+ <div class="status"><div class="statusIcon" id="statusIcon">🥔</div><div><b id="statusTitle">오늘을 시작해볼까요?</b><p id="statusMsg">타임라인을 하나씩 채워보세요.</p></div></div>
+</section>
+</div>
+
+<nav class="nav"><div class="navin"><button class="active">🥔 오늘</button><button onclick="historyView()">📅 기록</button><button onclick="growthView()">🏆 성장</button></div></nav>
+<div class="modal" id="modal"><div class="sheet"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div><div class="toast" id="toast"></div>
+
+
+<script>
+const KEY='potato100_final_checked_v3';
+const blank={start:62,target:55,startDate:null,days:{},weightLog:[]};
+let db=JSON.parse(localStorage.getItem(KEY)||'null')||blank;
+if(!db.days)db.days={};
+if(!db.weightLog)db.weightLog=[];
+if(!db.startDate)db.startDate=localDate();
+
+const slots=[
+ {id:'breakfast',time:'08:00',icon:'🌅',title:'아침',type:'breakfast'},
+ {id:'lunch',time:'11:30',icon:'🍚',title:'점심',type:'main'},
+ {id:'cafe',time:'15:00',icon:'☕',title:'카페',type:'quick'},
+ {id:'prework',time:'17:00',icon:'🥛',title:'운동 전',type:'quick'},
+ {id:'workout',time:'18:00',icon:'🏋️',title:'운동',type:'workout'},
+ {id:'dinner',time:'19:30',icon:'🍽️',title:'운동 후 저녁',type:'main'}
+];
+
+function localDate(d=new Date()){
+ const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');
+ return `${y}-${m}-${day}`;
+}
+function dateObj(s){const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);}
+function dayNum(){return Math.min(100,Math.max(1,Math.floor((dateObj(localDate())-dateObj(db.startDate))/86400000)+1));}
+function todayData(){return db.days[localDate()]||{slots:{}};}
+function saveToday(data){db.days[localDate()]=data;}
+function xpForMain(a){return {소식:8,적당:15,배부름:3,과식:0}[a]||0;}
+function dayXP(d){
+ let xp=0;
+ Object.entries(d.slots||{}).forEach(([id,x])=>{
+   if(id==='breakfast')xp+=3;
+   else if(id==='workout')xp+=30;
+   else if(id==='lunch'||id==='dinner')xp+=xpForMain(x.amount);
+   else xp+=8;
+ });
+ if(d.weight)xp+=5;
+ return xp;
+}
+function totalXP(){return Object.values(db.days).reduce((n,d)=>n+dayXP(d),0);}
+function successFor(d){
+ const mains=['lunch','dinner'].map(k=>d.slots?.[k]).filter(Boolean);
+ if(!mains.length)return false;
+ if(mains.some(x=>x.amount==='과식'))return false;
+ // 운동한 날: 과식 없음이면 성공 / 운동을 쉰 날: 저녁을 소식 또는 적당으로 기록하면 성공
+ return !!d.slots?.workout || mains.some(x=>x.amount==='소식'||x.amount==='적당');
+}
+function stats(){
+ let best=0,run=0;
+ const keys=Object.keys(db.days).sort();
+ for(const k of keys){if(db.days[k].success)run++;else run=0;best=Math.max(best,run);}
+ let streak=0,d=dateObj(localDate());
+ while(true){const k=localDate(d);if(db.days[k]?.success){streak++;d.setDate(d.getDate()-1)}else break;}
+ return {streak,best,success:keys.filter(k=>db.days[k].success).length};
+}
+function save(){localStorage.setItem(KEY,JSON.stringify(db));render();}
+
+function render(){
+ const xp=totalXP(),lvl=Math.floor(xp/100)+1,st=stats();
+ const stages=[
+  {at:1,icon:'🥔',name:'꼬마 감자'},
+  {at:5,icon:'🌱🥔',name:'새싹 감자'},
+  {at:10,icon:'🥔🌿',name:'성장 감자'},
+  {at:20,icon:'🥔🏃',name:'운동 감자'},
+  {at:30,icon:'🥔✨',name:'반짝 감자'},
+  {at:40,icon:'👑🥔',name:'100일 감자'}
+ ];
+ let cur=stages[0];stages.forEach(s=>{if(lvl>=s.at)cur=s;});
+ const next=stages.find(s=>s.at>lvl);
+ document.getElementById('potato').textContent=cur.icon;
+ document.getElementById('name').textContent=cur.name;
+ document.getElementById('level').textContent='LV.'+String(lvl).padStart(2,'0');
+ document.getElementById('day').textContent=`DAY ${dayNum()} / 100`;
+ document.getElementById('streak').textContent=`🔥 ${st.streak} DAY STREAK`;
+ document.getElementById('xptext').textContent=`${xp%100} / 100`;
+ document.getElementById('xpfill').style.width=(xp%100)+'%';
+ document.getElementById('success').textContent=st.success;
+ document.getElementById('best').textContent=st.best;
+ document.getElementById('xpmini').textContent=xp;
+ const recent=db.weightLog.length?db.weightLog[db.weightLog.length-1].w:db.start;
+ document.getElementById('current').textContent=recent.toFixed(1)+' kg';
+ document.getElementById('wNow').textContent=db.weightLog.length?recent.toFixed(1)+' kg':'— kg';
+ renderTimeline();renderGraph();renderGrowth(stages,lvl);status();
+}
+
+function renderTimeline(){
+ const data=todayData(), entries=Object.entries(data.slots||{}).map(([id,x])=>({id,x,s:slots.find(a=>a.id===id)})).filter(a=>a.x);
+ entries.sort((a,b)=>(a.x.time||'99:99').localeCompare(b.x.time||'99:99'));
+ let out=entries.map(a=>`<div class="slot"><div class="time">${a.x.time||'--:--'}</div><div>${eventHTML(a.s,a.x)}</div></div>`).join('');
+ const empty=slots.filter(s=>!data.slots?.[s.id]);
+ out+=empty.map(s=>`<div class="slot"><div class="time">—</div><div>${emptyHTML(s)}</div></div>`).join('');
+ document.getElementById('timeline').innerHTML=out||'<div class="smallNote" style="padding:8px 0">아직 기록이 없어요.</div>';
+}
+function timeField(value){return `<div class="field"><label>수행한 시간</label><input id="time" type="time" value="${value||''}"></div>`}
+function defaultTime(){const d=new Date();return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`}
+function openSlot(id){
+ const s=slots.find(a=>a.id===id),old=todayData().slots?.[id],tm=old?.time||defaultTime();
+ if(s.type==='breakfast'){modal(`<h2>🌅 아침</h2>${timeField(tm)}<div class="field"><label>아침을 먹었나요?</label><div class="pills"><button class="pill ${!old||old.text==='거름'?'sel':''}" onclick="pick(this)">거름</button><button class="pill ${old&&old.text!=='거름'?'sel':''}" onclick="pick(this)">먹음</button></div></div><div class="field"><label>먹었다면 무엇을?</label><input id="txt" value="${old&&old.text!=='거름'?esc(old.text):''}" placeholder="예: 두유"></div><button class="primary" onclick="saveSlot('${id}')">저장하기</button>`);return}
+ if(s.type==='main'){const amt=old?.amount||'적당';modal(`<h2>${s.icon} ${s.title}</h2>${timeField(tm)}<div class="field"><label>무엇을 먹었나요?</label><input id="txt" value="${esc(old?.text||'')}" placeholder="예: 구내식당, 파스타"></div><div class="field"><label>먹은 양 <span style="font-size:9px">소식=1/3~1/2 · 적당=보통보다 살짝 아쉬운 정도</span></label><div class="pills">${['소식','적당','배부름','과식'].map(v=>`<button class="pill ${v===amt?'sel':''}" onclick="pick(this)">${v}</button>`).join('')}</div></div><button class="primary" onclick="saveSlot('${id}')">저장하기</button>`);return}
+ if(s.type==='quick'){const preset=s.id==='cafe'?'아이스 라떼':s.id==='prework'?'두유':'';modal(`<h2>${s.icon} ${s.title}</h2>${timeField(tm)}<div class="field"><label>무엇을 먹었나요?</label><input id="txt" value="${esc(old?.text||preset)}" placeholder="예: 두유, 쿠키"></div><button class="primary" onclick="saveSlot('${id}')">저장하기</button>`);return}
+ if(s.type==='workout'){const kind=old?.kind||'PT',detail=old?.detail||'유산소';modal(`<h2>🏋️ 운동</h2>${timeField(tm)}<div class="field"><label>운동 종류</label><div class="pills">${['PT','개인운동'].map(v=>`<button class="pill ${v===kind?'sel':''}" onclick="pick(this)">${v}</button>`).join('')}</div></div><div class="field"><label>내용</label><div class="pills">${['유산소','근력','기타'].map(v=>`<button class="pill ${v===detail?'sel':''}" onclick="pick(this)">${v}</button>`).join('')}</div></div><div class="field"><label>시간(분)</label><input id="mins" type="number" inputmode="numeric" value="${old?.mins||''}" placeholder="예: 45"></div><button class="primary" onclick="saveWorkout()">저장하기</button>`)}
+}
+function saveSlot(id){
+ const s=slots.find(a=>a.id===id),data=todayData();data.slots=data.slots||{};
+ const txt=document.getElementById('txt')?.value.trim(),time=document.getElementById('time')?.value;
+ if(!time){toast('수행한 시간을 입력해주세요');return}
+ if(id==='breakfast'){
+  const eat=[...document.querySelectorAll('.pill')].find(x=>x.classList.contains('sel')).textContent;
+  if(eat==='먹음'&&!txt){toast('먹은 것을 적어주세요');return}
+  data.slots[id]={time,text:eat==='거름'?'거름':txt};
+ }else{
+  if(!txt){toast('먹은 것을 적어주세요');return}
+  const amount=s.type==='main'?[...document.querySelectorAll('.pill')].find(x=>x.classList.contains('sel')).textContent:null;
+  data.slots[id]={time,text:txt,amount};
+ }
+ data.success=successFor(data);setTodayData(data);closeModal();toast('오늘 기록을 저장했어요');save()
+}
+function saveWorkout(){
+ const data=todayData();data.slots=data.slots||{},p=[...document.querySelectorAll('.pill')].filter(x=>x.classList.contains('sel'));
+ const mins=+document.getElementById('mins').value,time=document.getElementById('time')?.value;
+ if(!time){toast('운동한 시간을 입력해주세요');return} if(!mins||mins<1){toast('운동 시간을 입력해주세요');return}
+ data.slots.workout={time,kind:p[0].textContent,detail:p[1].textContent,mins};data.success=successFor(data);
+ setTodayData(data);closeModal();toast('운동 기록을 저장했어요');save()
+}
+function eventHTML(s,x){
+ let meta=x.kind?`${x.kind} · ${x.mins}분`:x.text||'기록 완료',tag=x.amount||'✓',title=s.title;
+ if(x.text&&s.type!=='breakfast')title+=' · '+esc(x.text);
+ return `<div class="event" onclick="openSlot('${s.id}')"><div class="eventMain"><span class="eventIcon">${s.icon}</span><div><div class="eventTitle">${title}</div><div class="eventMeta">${meta}</div></div></div><span class="tag ${x.amount==='과식'?'bad':x.amount==='배부름'?'warn':''}">${tag}</span></div>`
+}
+function historyView(){
+ const start=dateObj(db.startDate),days=Array.from({length:100},(_,i)=>{const d=new Date(start);d.setDate(d.getDate()+i);return {i,k:localDate(d),data:db.days[localDate(d)]}});
+ const rows=days.map(a=>{
+  const rec=a.data?.slots?Object.entries(a.data.slots).map(([id,x])=>({s:slots.find(s=>s.id===id),x})).filter(v=>v.s&&v.x).sort((u,v)=>(u.x.time||'99:99').localeCompare(v.x.time||'99:99')):[];
+  const body=rec.length?rec.map(v=>`<div style="display:flex;gap:8px;padding:5px 0;border-top:1px solid #30372b"><span style="font-family:monospace;color:#9da58f;width:42px">${v.x.time||'--:--'}</span><span>${v.s.icon} ${v.s.title}${v.x.text&&v.s.type!=='breakfast'?' · '+esc(v.x.text):''}${v.x.amount?' · '+v.x.amount:''}${v.x.kind?' · '+v.x.kind+' · '+v.x.mins+'분':''}</span></div>`).join(''):'<div class="smallNote" style="padding:7px 0">기록 없음</div>';
+  const weight=a.data?.weight?` · ⚖️ ${a.data.weight.toFixed(1)} kg`:'';
+  return `<details ${a.k===localDate()?'open':''} style="border:1px solid ${a.data?.success?'#536a43':'#343b2e'};background:#151a12;border-radius:11px;margin:7px 0;padding:9px 10px"><summary style="cursor:pointer;font-size:11px;font-weight:900;list-style:none">DAY ${a.i+1} · ${a.k.replaceAll('-','.')} ${weight} ${a.data?.success?'🌱':''}</summary><div style="margin-top:8px;font-size:9px">${body}</div></details>`
+ }).join('');
+ modal(`<h2>📅 100일 기록</h2><div class="smallNote">날짜를 누르면 그날의 식단·운동 기록을 입력한 시간순으로 볼 수 있어요.</div><div style="margin-top:12px">${rows}</div>`)
+}
+function renderGraph(){
+ const el=document.getElementById('graph'),W=500,H=125,pad=8;
+ const vals=db.weightLog.length?db.weightLog.map(x=>x.w):[db.start];
+ const min=Math.min(54.5,...vals),max=Math.max(63,...vals);
+ const y=v=>H-pad-(v-min)/Math.max(.5,max-min)*(H-pad*2);
+ const points=vals.map((v,i)=>{const x=pad+(i/Math.max(1,vals.length-1))*(W-pad*2);return `${x},${y(v)}`}).join(' ');
+ const gy=y(db.target);
+ el.innerHTML=`<div class="goalLine" style="top:${gy}px"><span class="goalLabel">GOAL 55.0</span></div><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><polyline points="${points}" fill="none" stroke="#a8c36f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>${vals.map((v,i)=>{const x=pad+(i/Math.max(1,vals.length-1))*(W-pad*2);return `<circle cx="${x}" cy="${y(v)}" r="4" fill="#d5e8a0"/>`}).join('')}</svg>`;
+}
+function renderGrowth(stages,lvl){
+ const cur=stages.reduce((a,s)=>lvl>=s.at?s:a,stages[0]),next=stages.find(s=>s.at>lvl),xp=totalXP();
+ document.getElementById('growthPotato').textContent=cur.icon;document.getElementById('nextStage').textContent=next?`${next.name} · LV.${next.at}`:'✨ 최종 진화 완료';document.getElementById('growthMsg').textContent=next?`${Math.max(0,next.at*100-xp)} XP 더 모으면 성장해요.`:'100일 여정을 완주한 특별한 감자예요.';
+}
+function status(){
+ const data=todayData(),main=['lunch','dinner'].map(k=>data.slots?.[k]).filter(Boolean),over=main.filter(x=>x.amount==='과식').length,bloat=main.filter(x=>x.amount==='배부름').length;
+ let t='오늘을 시작해볼까요?',m='체중과 타임라인을 하나씩 기록해보세요.',i='🥔';
+ if(over){t='조금 아쉬운 하루';m='과식이 기록됐어요. 감자는 퇴화하지 않아요. 내일 다시 시작하면 됩니다.';i='🫠';}
+ else if(successFor(data)){t='감자, 순항 중!';m=`메인 식사 ${main.length}회 · 과식 없음${data.slots?.workout?' · 운동 완료':''}${bloat?' · 배부름 '+bloat+'회':''}`;i='🌱';}
+ document.getElementById('statusTitle').textContent=t;document.getElementById('statusMsg').textContent=m;document.getElementById('statusIcon').textContent=i;
+}
+function historyView(){
+ const start=dateObj(db.startDate);
+ modal(`<h2>📅 100일 기록</h2><div class="smallNote">초록색은 성공한 날, 노란 테두리는 오늘이에요.</div><div class="calendar" style="margin-top:12px">${Array.from({length:100},(_,i)=>{const d=new Date(start);d.setDate(d.getDate()+i);const k=localDate(d),ok=db.days[k]?.success;return `<div class="calday ${ok?'good':''} ${k===localDate()?'today':''}">${i+1}</div>`}).join('')}</div><div style="margin-top:14px" class="smallNote">성공 ${stats().success}일 · 최장 연속 ${stats().best}일 · 총 XP ${totalXP()}</div>`);
+}
+function growthView(){
+ const lvl=Math.floor(totalXP()/100)+1;
+ modal(`<h2>🏆 감자 성장</h2><div class="growth" style="margin-bottom:12px"><div class="growthPotato">${document.getElementById('potato').textContent}</div><div><div class="growthTitle">${document.getElementById('name').textContent} · LV.${String(lvl).padStart(2,'0')}</div><div class="growthMsg">식사·운동·체중 기록으로 XP를 모아 감자를 키워요.</div></div></div><div class="smallNote">과식했다고 감자가 퇴화하거나 XP가 차감되지는 않아요.</div>`);
+}
+function openSettings(){
+ modal(`<h2>⚙️ 데이터 관리</h2><div class="smallNote">기록은 이 브라우저에 저장됩니다. 휴대폰을 바꾸거나 브라우저 데이터를 삭제하기 전에 백업하세요.</div><button class="primary" onclick="backup()">💾 데이터 백업</button><button class="secondary" onclick="document.getElementById('restoreFile').click()">📂 데이터 복구</button><input id="restoreFile" type="file" accept=".json" style="display:none" onchange="restore(this.files[0])"><button class="secondary" onclick="resetAll()">↩️ 처음부터 다시 시작</button>`);
+}
+function backup(){
+ const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='potato-100day-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('백업 파일을 저장했어요');
+}
+function restore(file){
+ if(!file)return;
+ const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.startDate||!x.days)throw 0;db=x;save();closeModal();toast('기록을 복구했어요');}catch(e){alert('올바른 감자 백업 파일이 아니에요.')}};r.readAsText(file);
+}
+function resetAll(){if(confirm('모든 기록을 지울까요?')){db=JSON.parse(JSON.stringify(blank));db.startDate=localDate();save();closeModal();toast('처음부터 시작했어요');}}
+function modal(c){document.getElementById('modalContent').innerHTML=c;document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function pick(el){el.parentElement.querySelectorAll('.pill').forEach(x=>x.classList.remove('sel'));el.classList.add('sel')}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1400)}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+render();
+</script>
+
+</body></html>
